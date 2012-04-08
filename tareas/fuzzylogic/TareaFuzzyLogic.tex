@@ -286,10 +286,106 @@ $\therefore$ se cumple
 \section{Pregunta 3}
 Sean R y S relaciones Fuzzy de X en Y. Verificar que las relaciones Fuzzy cumplen las siguientes propiedades. Use las t-norm y s-norm de Mamdani.
 
-\begin{itemize}
+\begin{enumerate}
 \item {\color{red}$(R \cup S)^{-1} = R^{-1} \cup S^{-1}$}
-\item{\color{red} $\overline{R^{-1}} = (\overline{R})^{-1}$}
+
+Definiendo $R$ y $S$ como:
+
+ $R=\left[
+      \begin{array}{ccc}
+        r_{1, 1} & \cdots & r_{1, m} \\
+        \vdots   & \ddots & \vdots       \\
+        r_{n, 1} & \cdots & r_{n, m}
+      \end{array}
+    \right] , S=\left[
+      \begin{array}{ccc}
+        s_{1, 1} & \cdots & s_{1, m} \\
+        \vdots   & \ddots & \vdots       \\
+        s_{n, 1} & \cdots & s_{n, m}
+      \end{array}
+    \right] $
+
+Se tiene que:
+\begin{itemize}
+\item $(R \cup S)^{-1} =\left[
+      \begin{array}{ccc}
+       max(r_{1, 1}.s_{1,1}) & \cdots & max(r_{1, m},s_{1,m}) \\
+        \vdots   & \ddots & \vdots       \\
+        max(r_{n, 1},s_{n,1}) & \cdots & max(r_{n, m},s_{n,m})
+      \end{array}
+    \right] ^T$
+   
+  $(R \cup S)^{-1}  =\left[
+      \begin{array}{ccc}
+       max(r_{1, 1}.s_{1,1}) & \cdots & max(r_{n, 1},s_{n,1}) \\
+        \vdots   & \ddots & \vdots       \\
+        max(r_{1, m},s_{1,m})  & \cdots & max(r_{n, m},s_{n,m})
+      \end{array}
+    \right] $
+
+    
+\item $R^{-1} \cup S^{-1}$
+
+Se tiene que:
+ $R^{-1}=\left[
+      \begin{array}{ccc}
+        r_{1, 1} & \cdots & r_{n, 1} \\
+        \vdots   & \ddots & \vdots       \\
+        r_{1, m}  & \cdots & r_{n, m}
+      \end{array}
+    \right] , S^{-1}=\left[
+      \begin{array}{ccc}
+        s_{1, 1} & \cdots & s_{n, 1}\\
+        \vdots   & \ddots & \vdots       \\
+         s_{1, m}   & \cdots & s_{n, m}
+      \end{array}
+    \right] $
+    
+    
+   De lo anterior se tiene,
+   
+ $R^{-1} \cup S^{-1} =\left[
+      \begin{array}{ccc}
+       max(r_{1, 1}.s_{1,1}) & \cdots & max(r_{n, 1},s_{n,1}) \\
+        \vdots   & \ddots & \vdots       \\
+        max(r_{1, m},s_{1,m})  & \cdots & max(r_{n, m},s_{n,m})
+      \end{array}
+    \right] $
+    
+    $\therefore$ se cumple.
+
+
 \end{itemize}
+
+\item{\color{red} $\overline{R^{-1}} = (\overline{R})^{-1}$}
+Se tiene que:
+
+$\overline{R^{-1}}=U-R^{T}=\left[
+      \begin{array}{ccc}
+        1-r_{1, 1} & \cdots & 1-r_{n, 1} \\
+        \vdots   & \ddots & \vdots       \\
+        1-r_{1, m}  & \cdots & 1-r_{n, m}
+      \end{array}
+    \right] $
+    
+  Por otra parte:
+$$ (\overline{R})^{-1}=(U-R)^T= \left[
+      \begin{array}{ccc}
+        1- r_{1, 1} & \cdots & 1- r_{1, m} \\
+        \vdots   & \ddots & \vdots       \\
+        1- r_{n, 1} & \cdots & 1-r_{n, m}
+      \end{array}
+    \right]^T=\left[
+      \begin{array}{ccc}
+        1-r_{1, 1} & \cdots & 1-r_{n, 1} \\
+        \vdots   & \ddots & \vdots       \\
+        1-r_{1, m}  & \cdots & 1-r_{n, m}
+      \end{array}
+    \right] $$
+  
+$\therefore$ se cumple
+
+\end{enumerate}
 
 \section{Pregunta 4}
 Sean $A$,$A$
