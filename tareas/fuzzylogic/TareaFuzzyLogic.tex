@@ -1,0 +1,237 @@
+
+\documentclass[12pt]{article}
+\usepackage[latin 1]{input enc} %Biblioteca de español
+\usepackage{latexsym}
+\usepackage[spanish]{babel} %Biblioteca de español
+\usepackage[dvips]{epsfig} %Biblioteca para insertar figuras
+\usepackage{listings}
+\usepackage{color}
+\usepackage[dvips]{epsfig} %Biblioteca para insertar figuras
+\usepackage{url}
+\usepackage{amssymb}
+
+
+\lstset{language=Matlab, backgroundcolor=\color{white}, basicstyle=\small, commentstyle=\color{blue},frame=single,title=\lstname}
+
+ %A continuación se presenta algunos códigos para cambiar el formato de la hoja.
+ \topmargin  -1.8 cm
+ \setlength{\paperheight}{27.7cm}
+ \setlength{\textheight}{23.7cm}
+ \setlength{\paperwidth}{21cm}
+ \oddsidemargin    0 cm \evensidemargin   0cm
+ \setlength{\textwidth}{17cm}
+ \newlength{\defbaselineskip}
+ \setlength{\defbaselineskip}{\baselineskip}
+ \newcommand{\setlinespacing}[1]%
+           {\setlength{\baselineskip}{#1 \defbaselineskip}}
+ \newcommand{\doublespacing}{\setlength{\baselineskip}%
+                           {1.5 \defbaselineskip}}
+ \newcommand{\singlespacing}{\setlength{\baselineskip}{\defbaselineskip}}
+
+ 
+
+\title{\textbf{Tarea Fuzzy Logic} \\Inferencia de Conocimiento en Sistemas de Información\\ Profesor: Dr.(c)
+Héctor Allende}
+
+\author{Paola Arce\\ \textit{paola.arce@usm.cl}\\ Departamento de
+Informática \\ Universidad Técnica Federico Santa María}
+
+
+
+\begin{document}
+\maketitle
+\section{Pregunta 1}
+\subsection{Operadores t-norma} Verificar que los operadores PAND (t-norm probabilistic) y LAND (t-norm de Lukasiewics) cumplen las propiedades de t-norma.
+
+Un operador t-norm debe satisfacer las siguientes condiciones:
+
+\begin{enumerate}
+	\item{Condiciones de borde}
+	 	\begin{enumerate}
+ 			\item $T(0,0) = 0$
+				\begin{enumerate}
+					\item $PAND(0,0)=0*0=0 $   
+					 $\therefore$  se cumple
+					\item $LAND(0,0)=max(0+0-1,0)=0$
+					$\therefore$  se cumple
+				\end{enumerate}
+			\item $T(a,1)=T(1,a)=a$
+				\begin{enumerate}
+					\item $PAND(a,1)=a*1=a \quad \wedge \quad  PAND(1,a)=1*a=a$   
+					 $\therefore$  se cumple
+					\item $LAND(a,1)=max(a+1-1,0)=a \hspace{2mm} \wedge \hspace{2mm}LAND(1,a)=max(1+a-1,0)=a$
+					$\therefore$  se cumple
+				\end{enumerate}
+		\end{enumerate}
+	\item{Monotonia} $T(a,b) \leq T(c,d) \quad $ if $ \quad a \leq c \wedge b \leq d$
+		\begin{enumerate}
+					\item $PAND(a,b)=ab \quad \wedge \quad PAND(c,d)=cd$
+					
+					Dado que $ a \leq c \wedge b \leq d$ se tiene que $ab \leq cd$
+					 $$\therefore PAND(a,b)=ab \leq PAND(c,d)=cd \quad \mbox{se cumple}$$
+					\item $LAND(a,b)=max(a+b-1,0) \quad \wedge \quad LAND(c,d)=max(c+d-1,0)$
+					
+					Dado que $ a \leq c \wedge b \leq d$ se tiene que $a+b \leq c+d$ y $a+b -1\leq c+d-1$
+					
+					De aqui se tiene que $max(a+b-1,0) \leq max(c+d-1,0)$
+					
+					$\therefore LAND(a,b) \leq LAND(c,d)$  se cumple
+				\end{enumerate}
+	\item{Conmutatividad} $T(a,b)=T(b,a)$
+		\begin{enumerate}
+					\item $PAND(a,b)=ab \quad \wedge \quad  PAND(b,a)=ba=ab$   
+					 $\therefore$  se cumple
+					\item $LAND(a,b)=max(a+b-1,0)=a \hspace{2mm} \wedge \hspace{2mm}LAND(b,a)=max(b+a-1,0)=max(a+b-1,0)$
+					$\therefore$  se cumple
+				\end{enumerate}
+	\item{Asociatividad} $T(a,T(b,c))=T(T(a,b),c)$
+		\begin{enumerate}
+			\item $PAND(a, PAND(b,c))=a*PAND(b,c)=abc \quad \wedge \quad PAND(PAND(a,b),c)=PAND(a,b)*c=abc$  $\therefore$  se cumple
+			\item $LAND(a,LAND(b,c))=max(a+max(b+c-1,0)-1,0)$
+			
+			$=\left\{
+				\begin{array}{ll}
+					max(a+b+c-2,0)=a+b+c-2  & \mbox{if } a+b \geq 1 \wedge b+c \geq 1\\
+					max(a+b+c-2,0)=0 & \mbox{if } a+b \leq 1 \wedge b+c \geq 1\\
+					max(a-1,0)=0 & \mbox{if } a+b \geq 1 \wedge b+c \leq 1\\
+					max(a-1,0)=0 & \mbox{if } a+b \leq 1 \wedge b+c \leq 1\\
+				\end{array}
+			\right.$
+			
+			$LAND(LAND(a,b),c)=max(max(a+b-1,0)+c-1,0)$
+			
+			$=\left\{
+				\begin{array}{ll}
+					max(a+b+c-2,0)=a+b+c-2  & \mbox{if } a+b \geq 1 \wedge b+c \geq 1\\
+					max(c-1,0)=0 & \mbox{if } a+b \leq 1 \wedge b+c \geq 1\\
+					max(a+b+c-2,0)=0 & \mbox{if } a+b \geq 1 \wedge b+c \leq 1\\
+					max(c-1,0)=0 & \mbox{if } a+b \leq 1 \wedge b+c \leq 1\\
+				\end{array}
+			\right.$
+			
+			$\therefore$ se cumple. Ambas funciones son iguales en cada caso.			
+		\end{enumerate}
+\end{enumerate}
+
+
+
+\subsection{Operadores s-norma} Verificar que los operadores POR (s-norm probabilistic) y LOR (s-norm de Lukasiewics) cumplen las propiedades de s-norma.
+
+Un operador s-norm debe satisfacer las siguientes condiciones:
+\begin{enumerate}
+	\item{Condiciones de borde}
+	 	\begin{enumerate}
+ 			\item $S(1,1) = 1$
+				\begin{enumerate}
+					\item $POR(1,1)=1+1-1=1 $   
+					 $\therefore$  se cumple
+					\item $LOR(0,0)=min(1+1,1)=1$
+					$\therefore$  se cumple
+				\end{enumerate}
+			\item $S(a,0)=S(0,a)=a$
+				\begin{enumerate}
+					\item $POR(a,0)=a+0-0=a \quad \wedge \quad  POR(0,a)=0+a-0=a$   
+					 $\therefore$  se cumple
+					\item $LOR(a,0)=min(a+0,1)=a \hspace{2mm} \wedge \hspace{2mm}LOR(0,a)=min(0+a,1)=a$
+					$\therefore$  se cumple
+				\end{enumerate}
+		\end{enumerate}
+	\item{Monotonia} $S(a,b) \leq S(c,d) \quad $ if $ \quad a \leq c \wedge b \leq d$
+		\begin{enumerate}
+					\item $POR(a,b)=a+b-ab \quad \wedge \quad POR(c,d)=c+d-cd$
+					p.d $a+b-ab \leq c+d -cd$ lo que equivale a demostrar que
+					
+					$$c+d-cd -(a+b-ab)\geq 0 $$
+					$$(c-a) + d(1-c) -b(1-a) \geq (c-a) + b(1-c) -b(1-a) = c-a+b-bc-b+ab=c-a-bc+ab$$
+					$$(c-a) + d(1-c) -b(1-a) \geq (c-a)(1-b)$$
+					Los términos $(c-a)$ y $(1-b)$ son $\geq 0$ por definición
+					
+					$\therefore \quad (c-a) + d(1-c) -b(1-a) \geq 0$ 
+					
+					\item $LOR(a,b)=min(a+b,1) \quad \wedge \quad LOR(c,d)=min(c+d,1)$
+					
+					Dado que $ a+b \leq c+d$ se tiene que:					
+					$min(a+b,1) \leq min(c+d,1)$
+					
+					$\therefore LOR(a,b) \leq LOR(c,d)$  se cumple
+				\end{enumerate}
+	\item{Conmutatividad} $S(a,b)=S(b,a)$
+		\begin{enumerate}
+					\item $POR(a,b)=a+b-ab \quad \wedge \quad  POR(b,a)=b+a-ab=a+b-ab$   
+					 $\therefore$  se cumple
+					\item $LOR(a,b)=min(a+b,1) \hspace{2mm} \wedge \hspace{2mm}LOR(b,a)=min(b+a,1)=min(a+b,1)$
+					$\therefore$  se cumple
+				\end{enumerate}
+	\item{Asociatividad} $S(a,S(b,c))=S(S(a,b),c)$
+		\begin{enumerate}
+			\item $POR(a, POR(b,c))=a+POR(b,c)-a*POR(b,c)=a+b+c-bc-ab-ac+abc 
+			\quad \wedge \quad POR(POR(a,b),c)=POR(a,b)+c-POR(a,b)*c=a+b+c-bc-ab-ac+abc $  $\therefore$  se cumple
+			\item $LOR(a,LOR(b,c))=min(a+min(b+c,1),1)$
+			
+			$=\left\{
+				\begin{array}{ll}
+					min(a+1,1)=1  & \mbox{if } a+b \geq 1 \wedge b+c \geq 1\\
+					min(a+1,1)=1 & \mbox{if } a+b \leq 1 \wedge b+c \geq 1\\
+					min(a+b+c,1)=1 & \mbox{if } a+b \geq 1 \wedge b+c \leq 1\\
+					min(a+b+c,1)=\left\{  
+					\begin{array}{ll}
+					a+b+c  & \mbox{if } a+b+c \leq 1\\
+					1 & \mbox{if } a+b+c \geq 1
+					\end{array}\right.
+				 & \mbox{if } a+b \leq 1 \wedge b+c \leq 1
+				\end{array}
+			\right.$
+			
+			$LOR(LOR(a,b),c)=min(min(a+b,1)+c,1)$
+			
+		$=\left\{
+				\begin{array}{ll}
+					min(1+c,1)=1  & \mbox{if } a+b \geq 1 \wedge b+c \geq 1\\
+					min(a+b+c,1)=1 & \mbox{if } a+b \leq 1 \wedge b+c \geq 1\\
+					min(1+c,1)=1 & \mbox{if } a+b \geq 1 \wedge b+c \leq 1\\
+					min(a+b+c,1)=\left\{  
+					\begin{array}{ll}
+					a+b+c  & \mbox{if } a+b+c \leq 1\\
+					1 & \mbox{if } a+b+c \geq 1
+					\end{array}\right.
+				 & \mbox{if } a+b \leq 1 \wedge b+c \leq 1
+				\end{array}
+			\right.$
+			
+			$\therefore$ se cumple. Ambas funciones son iguales en cada caso.			
+		\end{enumerate}
+\end{enumerate}
+
+
+
+\section{Pregunta 2}
+Verificar si las siguientes propiedades se cumplen para Fuzzy sets. Use las t-norm y s-norm de problema
+1 en caso de no ser válida la propiedad mostrar con un contra ejemplo.
+
+\begin{itemize}
+\item $\overline{A \cup B} = \overline{A} \cap \overline{B}$
+\item $A \cup (B \cap C)=(A \cup B) \cap (A \cup C)$
+\item $A \cup \overline{A}=X$
+\item $A \cup \overline{A}= \emptyset$
+\end{itemize}
+
+\section{Pregunta 3}
+Sean R y S relaciones Fuzzy de X en Y. Verificar que las relaciones Fuzzy cumplen las siguientes propiedades. Use las t-norm y s-norm de Mamdani.
+
+\begin{itemize}
+\item $(R \cup S)^{-1} = R^{-1} \cup S^{-1}$
+\item $\overline{R^{-1}} = (\overline{R})^{-1}$
+\end{itemize}
+
+\section{Pregunta 4}
+Sean $A$,$A$
+
+\begin{itemize}
+\item $(R \circ S) ^{-1} = S^{-1} \circ R^{-1} $
+\item $(R \circ S) \neq S \circ R$
+\item $S \subseteq T \Rightarrow R \circ S \subseteq  S \circ T$
+\end{itemize}
+
+\end{document}
+
+
