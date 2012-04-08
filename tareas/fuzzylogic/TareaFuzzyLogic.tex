@@ -46,7 +46,7 @@ Informática \\ Universidad Técnica Federico Santa María}
 Un operador t-norm debe satisfacer las siguientes condiciones:
 
 \begin{enumerate}
-	\item{Condiciones de borde}
+	\item{{\color{red}Condiciones de borde}}
 	 	\begin{enumerate}
  			\item $T(0,0) = 0$
 				\begin{enumerate}
@@ -63,7 +63,7 @@ Un operador t-norm debe satisfacer las siguientes condiciones:
 					$\therefore$  se cumple
 				\end{enumerate}
 		\end{enumerate}
-	\item{Monotonia} $T(a,b) \leq T(c,d) \quad $ if $ \quad a \leq c \wedge b \leq d$
+	\item{{\color{red}Monotonia}} $T(a,b) \leq T(c,d) \quad $ if $ \quad a \leq c \wedge b \leq d$
 		\begin{enumerate}
 					\item $PAND(a,b)=ab \quad \wedge \quad PAND(c,d)=cd$
 					
@@ -77,14 +77,14 @@ Un operador t-norm debe satisfacer las siguientes condiciones:
 					
 					$\therefore LAND(a,b) \leq LAND(c,d)$  se cumple
 				\end{enumerate}
-	\item{Conmutatividad} $T(a,b)=T(b,a)$
+	\item{{\color{red}Conmutatividad}} $T(a,b)=T(b,a)$
 		\begin{enumerate}
 					\item $PAND(a,b)=ab \quad \wedge \quad  PAND(b,a)=ba=ab$   
 					 $\therefore$  se cumple
 					\item $LAND(a,b)=max(a+b-1,0)=a \hspace{2mm} \wedge \hspace{2mm}LAND(b,a)=max(b+a-1,0)=max(a+b-1,0)$
 					$\therefore$  se cumple
 				\end{enumerate}
-	\item{Asociatividad} $T(a,T(b,c))=T(T(a,b),c)$
+	\item{{\color{red}Asociatividad}} $T(a,T(b,c))=T(T(a,b),c)$
 		\begin{enumerate}
 			\item $PAND(a, PAND(b,c))=a*PAND(b,c)=abc \quad \wedge \quad PAND(PAND(a,b),c)=PAND(a,b)*c=abc$  $\therefore$  se cumple
 			\item $LAND(a,LAND(b,c))=max(a+max(b+c-1,0)-1,0)$
@@ -119,7 +119,7 @@ Un operador t-norm debe satisfacer las siguientes condiciones:
 
 Un operador s-norm debe satisfacer las siguientes condiciones:
 \begin{enumerate}
-	\item{Condiciones de borde}
+	\item{{\color{red}Condiciones de borde}}
 	 	\begin{enumerate}
  			\item $S(1,1) = 1$
 				\begin{enumerate}
@@ -136,7 +136,7 @@ Un operador s-norm debe satisfacer las siguientes condiciones:
 					$\therefore$  se cumple
 				\end{enumerate}
 		\end{enumerate}
-	\item{Monotonia} $S(a,b) \leq S(c,d) \quad $ if $ \quad a \leq c \wedge b \leq d$
+	\item{{\color{red}Monotonia}} $S(a,b) \leq S(c,d) \quad $ if $ \quad a \leq c \wedge b \leq d$
 		\begin{enumerate}
 					\item $POR(a,b)=a+b-ab \quad \wedge \quad POR(c,d)=c+d-cd$
 					p.d $a+b-ab \leq c+d -cd$ lo que equivale a demostrar que
@@ -155,14 +155,14 @@ Un operador s-norm debe satisfacer las siguientes condiciones:
 					
 					$\therefore LOR(a,b) \leq LOR(c,d)$  se cumple
 				\end{enumerate}
-	\item{Conmutatividad} $S(a,b)=S(b,a)$
+	\item{{\color{red}Conmutatividad}} $S(a,b)=S(b,a)$
 		\begin{enumerate}
 					\item $POR(a,b)=a+b-ab \quad \wedge \quad  POR(b,a)=b+a-ab=a+b-ab$   
 					 $\therefore$  se cumple
 					\item $LOR(a,b)=min(a+b,1) \hspace{2mm} \wedge \hspace{2mm}LOR(b,a)=min(b+a,1)=min(a+b,1)$
 					$\therefore$  se cumple
 				\end{enumerate}
-	\item{Asociatividad} $S(a,S(b,c))=S(S(a,b),c)$
+	\item{{\color{red}Asociatividad}} $S(a,S(b,c))=S(S(a,b),c)$
 		\begin{enumerate}
 			\item $POR(a, POR(b,c))=a+POR(b,c)-a*POR(b,c)=a+b+c-bc-ab-ac+abc 
 			\quad \wedge \quad POR(POR(a,b),c)=POR(a,b)+c-POR(a,b)*c=a+b+c-bc-ab-ac+abc $  $\therefore$  se cumple
@@ -209,27 +209,95 @@ Verificar si las siguientes propiedades se cumplen para Fuzzy sets. Use las t-no
 1 en caso de no ser válida la propiedad mostrar con un contra ejemplo.
 
 \begin{itemize}
-\item $\overline{A \cup B} = \overline{A} \cap \overline{B}$
-\item $A \cup (B \cap C)=(A \cup B) \cap (A \cup C)$
-\item $A \cup \overline{A}=X$
-\item $A \cup \overline{A}= \emptyset$
+\item {\color{red}$\overline{A \cup B} = \overline{A} \cap \overline{B}$}
+\begin{enumerate}
+\item{Usando PAND y POR}\newline
+$\overline{A \cup B} = \overline{POR(A,B)}=1- A-B-AB$ \newline
+$ \overline{A} \cap \overline{B} = PAND(1-A,1-B)=(1-A)*(1-B)=1-A-B-AB$ \newline
+$\therefore$ se cumple
+\item{Usando LAND y LOR} \newline
+$\overline{A \cup B} = \overline{LOR(A,B)}=1- min(A+B,1) = \left\{  
+					\begin{array}{ll}
+					1-1=0 & \mbox{if } A+B \geq 1\\
+					1-A-B & \mbox{if } A+B < 1
+					\end{array}\right.
+					$ \newline
+$ \overline{A} \cap \overline{B} = LAND(1-A,1-B)=max(1-A+1-B-1,0)=$
+                                              \newline
+                                              $max(1-A-B,0)=\left\{  
+					\begin{array}{ll}
+					0 & \mbox{if } A+B \geq 1\\
+					1-A-B & \mbox{if } A+B < 1
+					\end{array}\right.
+					$ \newline
+
+$\therefore$ se cumple
+\end{enumerate}
+
+
+
+\item  {\color{red}$A \cup (B \cap C)=(A \cup B) \cap (A \cup C)$}
+\begin{enumerate}
+\item{Usando PAND y POR}\newline
+$POR(A,PAND(B,C))=A+PAND(B,C)-A*PAND(B,C)=A+BC-ABC$ \newline
+$POR(A,B)*POR(A,C)=(A+B-AB)*(A+C-AC)$\newline
+$\therefore$ no son iguales
+
+Un contra ejemplo se obtiene dándole valores a las funciones de pertenencia. Sea $A=0.1$, $B=0.8$ y $C=0.3$. Se tiene que $A+BC-ABC=0.316$ y que $(A+B-AB)*(A+C-AC)=0.3034$
+
+\item{Usando LAND y LOR}\newline
+$POR(A,PAND(B,C))=min(A+max(B+C-1,0),1)$\newline
+$POR(A,B)*POR(A,C)=max(min(A+B,1)+min(A+C,1)-1,0)$\newline
+Las funciones no son iguales, basta tomar el caso donde $B+C <1 \wedge A+B >1 \wedge A+C > 1$ se tendría que:
+\newline
+$POR(A,PAND(B,C))=min(A,1)=A$
+$POR(A,B)*POR(A,C)=max(1+1-1,0)=1$
+\newline
+$\therefore$ no son iguales
+\end{enumerate}
+
+\item  {\color{red}$A \cup \overline{A}=X$}
+
+\begin{itemize}
+\item{Usando PAND y POR}\newline
+$POR(A, 1-A)=A+(1-A)-A(1-A)=1-A+A^2 \neq 1$
+$\therefore$ no se cumple
+
+\item{Usando LAND y LOR}\newline
+$LOR(A,1-A)=min(A+1-A,1)=1$
+$\therefore$ se cumple
+\end{itemize}
+
+\item  {\color{red}$A \cup \overline{A}= \emptyset$}
+
+\begin{itemize}
+\item{Usando PAND y POR}\newline
+$PAND(A, 1-A)=A*(1-A)= A- A^2 \neq \emptyset$
+$\therefore$ no se cumple
+
+\item{Usando LAND y LOR} \newline
+$LAND(A,1-A)=max(A+1-A-1-1,0)=0$
+$\therefore$ se cumple
+\end{itemize}
+
+
 \end{itemize}
 
 \section{Pregunta 3}
 Sean R y S relaciones Fuzzy de X en Y. Verificar que las relaciones Fuzzy cumplen las siguientes propiedades. Use las t-norm y s-norm de Mamdani.
 
 \begin{itemize}
-\item $(R \cup S)^{-1} = R^{-1} \cup S^{-1}$
-\item $\overline{R^{-1}} = (\overline{R})^{-1}$
+\item {\color{red}$(R \cup S)^{-1} = R^{-1} \cup S^{-1}$}
+\item{\color{red} $\overline{R^{-1}} = (\overline{R})^{-1}$}
 \end{itemize}
 
 \section{Pregunta 4}
 Sean $A$,$A$
 
 \begin{itemize}
-\item $(R \circ S) ^{-1} = S^{-1} \circ R^{-1} $
-\item $(R \circ S) \neq S \circ R$
-\item $S \subseteq T \Rightarrow R \circ S \subseteq  S \circ T$
+\item {\color{red}$(R \circ S) ^{-1} = S^{-1} \circ R^{-1} $}
+\item {\color{red}$(R \circ S) \neq S \circ R$}
+\item {\color{red}$S \subseteq T \Rightarrow R \circ S \subseteq  S \circ T$}
 \end{itemize}
 
 \end{document}
