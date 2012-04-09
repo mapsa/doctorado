@@ -401,8 +401,54 @@ Sean $A$,$A'$ Fuzzy sets y sean $R$, $R'$ relaciones Fuzzy de X en Y y S,T relac
 
 \begin{itemize}
 \item {\color{red}$(R \circ S) ^{-1} = S^{-1} \circ R^{-1} $}
+
+Daro que la relación $R \circ S$ es una relación de $X$ en $Z$, la relación inversa $(R \circ S) ^{-1}$ es una relación que va de $Z$ en $X$.
+
+Se define la función de pertenencia de la relación $(R \circ S) ^{-1}$ como:
+
+\begin{equation}
+\label{eq:41}
+\mu_{(R \circ S)^{-1}}(z,x)=\mu_{R \circ S}(x,z)
+\end{equation}
+
+donde
+
+$$\mu_{R \circ S}(x,z)=max_{y \in Y}[\mu_R(x,y) \wedge \mu_S(y,z)]$$
+
+Por otra parte la relación $S^{-1} \circ R^{-1}$ se define como:
+
+$$\mu_{S^{-1} \circ R^{-1}} = max_{y \in Y}[\mu_{S^{-1}}(z,y) \wedge \mu_{R^{-1}}(y,x)] $$
+
+Considerando las relaciones fuzzy converse de $S_{-1}$ y $R_{-1}$ se tiene:
+
+$$\mu_{S^{-1} \circ R^{-1}} = max_{y \in Y}[\mu_{S}(y,z) \wedge \mu_{R}(x,y)] $$
+
+$$\mu_{S^{-1} \circ R^{-1}} = max_{y \in Y}[\mu_{R}(x,y) \wedge \mu_{S}(y,z)] $$
+
+Que corresponde a la equivalencia mostrada en la ecuación \ref{eq:41}. $\therefore$ se cumple.
+
+
 \item {\color{red}$(R \circ S) \neq S \circ R$}
-\item {\color{red}$S \subseteq T \Rightarrow R \circ S \subseteq  S \circ T$}
+
+La desigualdad se cumple ya que la relación $R \circ S$ está definida en $X \times Z$ y la relación $S \circ R$ ni siquiera es válida, debido a que la relación $S$ está definida en $Y \times Z$ y la relación $R$ en $X \times Y$ ($Z$ y $X$ son distintos). 
+
+\item {\color{red}$S \subseteq T \Rightarrow R \circ S \subseteq  R \circ T$}
+
+Se tiene que la relación de inclusión entre $S$ y $T$ se define como:
+
+$$S \subseteq T \Leftrightarrow \mu_S(y,z) \leq \mu_T(y,z) \quad \forall x \in X \quad \forall y \in Y$$
+
+$$\Rightarrow min(\mu_R(x,y),\mu_S(y,z)) \leq min(\mu_R(x,y),\mu_T(y,z))$$
+
+$$\Rightarrow max_{y \in Y}\{min(\mu_R(x,y),\mu_S(y,z))\} \leq max_{y \in Y}\{min(\mu_R(x,y),\mu_T(y,z))\}$$
+
+$$\Rightarrow \mu_{R \circ S}(x,z) \leq \mu_{R \circ T}(x,z)$$
+
+$$\Rightarrow R \circ S \subseteq  R \circ T$$
+
+
+$\therefore$ la propiedad se cumple.
+
 \end{itemize}
 
 \end{document}
