@@ -288,8 +288,22 @@ Sean R y S relaciones Fuzzy de X en Y. Verificar que las relaciones Fuzzy cumple
 
 \begin{enumerate}
 \item {\color{red}$(R \cup S)^{-1} = R^{-1} \cup S^{-1}$}
+\newline
+Se define la unión como sigue:
 
-Definiendo $R$ y $S$ como:
+$$\mu_{R \cup S}(x,y)=\mu_R(x,y) \vee \mu_S(x,y)$$
+$$\mu_{(R \cup S)^{-1}}(y,x)=\mu_{R \cup S}(x,y)$$
+
+
+Por otra parte $R^{-1} \cup S^{-1}$ se define:
+
+$$\mu_{R_{-1}}(y,x) \vee  \mu_{S_{-1}}(y,x)  = \mu_R(x,y) \vee \mu_S(x,y) = \mu_{R \cup S}(x,y)$$ 
+
+
+$\therefore$ son iguales.
+\newline
+
+La expresión discreta del problema es usando la forma matricial de $R$ y $S$ que se definen como:
 
  $R=\left[
       \begin{array}{ccc}
@@ -325,6 +339,8 @@ Se tiene que:
 
     
 \item $R^{-1} \cup S^{-1}$
+\newline
+
 
 Se tiene que:
  $R^{-1}=\left[
@@ -358,15 +374,23 @@ Se tiene que:
 \end{itemize}
 
 \item{\color{red} $\overline{R^{-1}} = (\overline{R})^{-1}$}
+\newline
 Se tiene que:
+$$\mu_{\overline{R^{-1}}}=1-\mu_{R^{-1}}(y,x)=1-\mu_R(x,y)$$
+y por otra parte:
 
-$\overline{R^{-1}}=U-R^{T}=\left[
+$$\mu_{(\overline{R})^{-1}}(y,x)=\mu_{\overline{R}}(x,y)=1-\mu_R(x,y)$$
+ $\therefore$ se cumple.
+ 
+ La expresión discreta del problema puede ser representada por:
+ 
+$$\overline{R^{-1}}=U-R^{T}=\left[
       \begin{array}{ccc}
         1-r_{1, 1} & \cdots & 1-r_{n, 1} \\
         \vdots   & \ddots & \vdots       \\
         1-r_{1, m}  & \cdots & 1-r_{n, m}
       \end{array}
-    \right] $
+    \right] $$
    
    
    Donde $U=\left[
@@ -419,7 +443,7 @@ Por otra parte la relación $S^{-1} \circ R^{-1}$ se define como:
 
 $$\mu_{S^{-1} \circ R^{-1}} = max_{y \in Y}[\mu_{S^{-1}}(z,y) \wedge \mu_{R^{-1}}(y,x)] $$
 
-Considerando las relaciones fuzzy converse de $S_{-1}$ y $R_{-1}$ se tiene:
+Considerando las relaciones fuzzy converse de $S^{-1}$ y $R^{-1}$ se tiene:
 
 $$\mu_{S^{-1} \circ R^{-1}} = max_{y \in Y}[\mu_{S}(y,z) \wedge \mu_{R}(x,y)] $$
 
