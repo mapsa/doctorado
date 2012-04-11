@@ -30,7 +30,7 @@
 
  
 
-\title{\textbf{Tarea Fuzzy Logic} \\Inferencia de Conocimiento en Sistemas de Información\\ Profesor: Dr.(c)
+\title{\textbf{Tarea Fuzzy Logic} \\Inferencia de Conocimiento en Sistemas de Información\\ Profesor: Dr.
 Héctor Allende}
 
 \author{Paola Arce\\ \textit{paola.arce@usm.cl}\\ Departamento de
@@ -115,7 +115,7 @@ Un operador t-norm debe satisfacer las siguientes condiciones:
 
 
 
-\subsection{Operadores s-norma} Verificar que los operadores POR (s-norm probabilistic) y LOR (s-norm de Lukasiewics) cumplen las propiedades de s-norma.
+\subsection{Operadores s-norma} \textit{Verificar que los operadores POR (s-norm probabilistic) y LOR (s-norm de Lukasiewics) cumplen las propiedades de s-norma.}
 
 Un operador s-norm debe satisfacer las siguientes condiciones:
 \begin{enumerate}
@@ -205,8 +205,8 @@ Un operador s-norm debe satisfacer las siguientes condiciones:
 
 
 \section{Pregunta 2}
-Verificar si las siguientes propiedades se cumplen para Fuzzy sets. Use las t-norm y s-norm de problema
-1 en caso de no ser válida la propiedad mostrar con un contra ejemplo.
+\textit{Verificar si las siguientes propiedades se cumplen para Fuzzy sets. Use las t-norm y s-norm de problema
+1 en caso de no ser válida la propiedad mostrar con un contra ejemplo.}
 
 \begin{itemize}
 \item {\color{red}$\overline{A \cup B} = \overline{A} \cap \overline{B}$}
@@ -284,7 +284,7 @@ $\therefore$ se cumple
 \end{itemize}
 
 \section{Pregunta 3}
-Sean R y S relaciones Fuzzy de X en Y. Verificar que las relaciones Fuzzy cumplen las siguientes propiedades. Use las t-norm y s-norm de Mamdani.
+\textit{Sean R y S relaciones Fuzzy de X en Y. Verificar que las relaciones Fuzzy cumplen las siguientes propiedades. Use las t-norm y s-norm de Mamdani.}
 
 \begin{enumerate}
 \item {\color{red}$(R \cup S)^{-1} = R^{-1} \cup S^{-1}$}
@@ -421,7 +421,7 @@ $\therefore$ se cumple
 \end{enumerate}
 
 \section{Pregunta 4}
-Sean $A$,$A'$ Fuzzy sets y sean $R$, $R'$ relaciones Fuzzy de X en Y y S,T relaciones Fuzzy de Y en Z. Verificar que:
+\textit{Sean $A$,$A'$ Fuzzy sets y sean $R$, $R'$ relaciones Fuzzy de X en Y y S,T relaciones Fuzzy de Y en Z. Verificar que:}
 
 \begin{itemize}
 \item {\color{red}$(R \circ S) ^{-1} = S^{-1} \circ R^{-1} $}
@@ -458,19 +458,39 @@ La desigualdad se cumple ya que la relación $R \circ S$ está definida en $X \tim
 
 \item {\color{red}$S \subseteq T \Rightarrow R \circ S \subseteq  R \circ T$}
 
-Se tiene que la relación de inclusión entre $S$ y $T$ se define como:
+Se tiene que la relación de inclusión entre $S$ y $T$, $S \subseteq T$ se define como:
 
-$$S \subseteq T \Leftrightarrow \mu_S(y,z) \leq \mu_T(y,z) \quad \forall x \in X \quad \forall y \in Y$$
+$$\mu_S(y,z) \leq \mu_T(y,z) \quad \forall x \in X \quad \forall y \in Y$$
 
-$$\Rightarrow min(\mu_R(x,y),\mu_S(y,z)) \leq min(\mu_R(x,y),\mu_T(y,z))$$
+Por lo tanto, debe demostrarse que se cumple lo siguiente:
 
-$$\Rightarrow max_{y \in Y}\{min(\mu_R(x,y),\mu_S(y,z))\} \leq max_{y \in Y}\{min(\mu_R(x,y),\mu_T(y,z))\}$$
-
-$$\Rightarrow \mu_{R \circ S}(x,z) \leq \mu_{R \circ T}(x,z)$$
-
-$$\Rightarrow R \circ S \subseteq  R \circ T$$
+$$\mu_S(y,z) \leq \mu_T(y,z) \Rightarrow max_{y \in Y}[min(\mu_{R}(x,y),\mu_{S}(y,x))] \leq max_{y \in Y}[min(\mu_{R}(x,y),\mu_{T}(y,x))]$$ 
 
 
+La expresión al lado derecho de la implicancia puede expresarse 
+
+ $=\left\{
+ \begin{array}{ll}
+  max_{y \in Y}[\mu_{S}(y,x)] \leq max_{y \in Y}[\mu_{T}(y,x)]  & \mbox{if } \mu_{R}(x,y) > \mu_{S}(y,x) \wedge \mu_{R}(x,y) > \mu_{T}(y,x)\\
+  max_{y \in Y}[\mu_{S}(y,x)] \leq max_{y \in Y}[\mu_{R}(x,y)]  & \mbox{if } \mu_{R}(x,y) > \mu_{S}(y,x) \wedge \mu_{R}(x,y) \leq \mu_{T}(y,x)\\
+  max_{y \in Y}[\mu_{R}(x,y)] \leq max_{y \in Y}[\mu_{T}(y,x)]  & \mbox{if } \mu_{R}(x,y) \leq \mu_{S}(y,x) \wedge \mu_{R}(x,y) > \mu_{T}(y,x)\\
+  max_{y \in Y}[\mu_{R}(x,y)] \leq max_{y \in Y}[\mu_{R}(x,y)]  & \mbox{if } \mu_{R}(x,y) \leq \mu_{S}(y,x) \wedge \mu_{R}(x,y) \leq \mu_{T}(y,x)\\       \end{array}
+\right.$
+
+Si $\mu_S(y,z) \leq \mu_T(y,z)$ podemos reescribir lo anterior como:
+
+ $=\left\{
+ \begin{array}{ll}
+  max_{y \in Y}[\mu_{S}(y,x)] \leq max_{y \in Y}[\mu_{T}(y,x)]  & \mbox{if } \mu_S(y,z) \leq \mu_T(y,z) \leq \mu_{R}(y,x) \quad \forall x,\forall y \forall z\\
+  max_{y \in Y}[\mu_{S}(y,x)] \leq max_{y \in Y}[\mu_{R}(x,y)]  & \mbox{if } \mu_S(y,z) \leq \mu_{R}(y,x) \leq \mu_T(y,z) \quad \forall x,\forall y \forall z\\
+  max_{y \in Y}[\mu_{R}(x,y)] \leq max_{y \in Y}[\mu_{T}(y,x)]  & \mbox{if } \mu_{R}(y,x) \leq \mu_S(y,z) \leq \mu_T(y,z) \quad \forall x,\forall y \forall z\\
+\end{array}
+\right.$
+
+En el primer caso, dado que $\mu_S(y,z) \leq \mu_T(y,z) \quad \forall y, \forall z$ implica que $max_{y \in Y}[\mu_{S}(y,x)] \leq max_{y \in Y}[\mu_{T}(y,x)]$. Los otros dos casos son análogos.
+
+Es claro ver que todas las implicancias son verdaderas cuando se cumple que $\mu_S(y,z) \leq \mu_T(y,z)$.
+  
 $\therefore$ la propiedad se cumple.
 
 \end{itemize}
