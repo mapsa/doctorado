@@ -246,12 +246,12 @@ $\therefore$ no son iguales
 Un contra ejemplo se obtiene dándole valores a las funciones de pertenencia. Sea $A=0.1$, $B=0.8$ y $C=0.3$. Se tiene que $A+BC-ABC=0.316$ y que $(A+B-AB)*(A+C-AC)=0.3034$
 
 \item{Usando LAND y LOR}\newline
-$POR(A,PAND(B,C))=min(A+max(B+C-1,0),1)$\newline
-$POR(A,B)*POR(A,C)=max(min(A+B,1)+min(A+C,1)-1,0)$\newline
+$LOR(A,LAND(B,C))=min(A+max(B+C-1,0),1)$\newline
+$LOR(A,B)*LOR(A,C)=max(min(A+B,1)+min(A+C,1)-1,0)$\newline
 Las funciones no son iguales, basta tomar el caso donde $B+C <1 \wedge A+B >1 \wedge A+C > 1$ se tendría que:
 \newline
-$POR(A,PAND(B,C))=min(A,1)=A$
-$POR(A,B)*POR(A,C)=max(1+1-1,0)=1$
+$LOR(A,LAND(B,C))=min(A,1)=A$
+$LOR(A,B)*LOR(A,C)=max(1+1-1,0)=1$
 \newline
 $\therefore$ no son iguales
 \end{enumerate}
