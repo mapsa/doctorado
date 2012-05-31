@@ -93,7 +93,7 @@
  
 %-------------------------------------------------------
 
-\title{Online Kernel Forecasting of Intraday Realized Volatility}
+\title{Lógicas Temporales}
 
 \author{Paola Arce}
 \address{Departamento de Inform\'atica,
@@ -116,8 +116,21 @@ We prove $1+1=2$.
 \section{Introduction}
 
 El término lógica temporal (temporal logic) se utiliza para representar información de manera temporal en un contexto de lógica. La lógica temporal es un tipo de lógica modal introducida en 1960 por Arthur Prior bajo el nombre de Tense Logic \cite{sep-logic-temporal} que surge del interés en la relación entre el tiempo y la modalidad (atribuido al filósofo Diodorus Cronus).
+En 1977 Pnueli propone el uso de lógicas temporales para verificación de propiedades a partir de la especificación de un sistema a partir de axiomas. Este proceso fue optimizado por Clarke y Emerson en 1981 para ciertas lógicas temporales. Posteriormente comenzó el estudio de la complejidad de verificación de estas lógicas en técnicas como: model-checking, parametrized complexity, etc.
 
 La lógica temporal es usada para aclarar aspectos filosóficos acerca del tiempo, para definir expresiones semánticas temporales en lenguaje natural, para codificar conocimiento temporal en inteligencia artificial y como herramienta para manejar los aspectos temporales de la ejecución de programas computacionales. 
+
+\section{Sistemas de transición}
+Las lógicas temporales permiten especificar propiedades dinámicas de un sistema sin introducir el tiempo explícitamente, describiendo secuencias de transiciones entre estados en un sistema que evoluciona en el tiempo. Por lo tanto, para poder estudiar las transiciones entre los estados, se debe primero modelar los sistemas como sistemas de transición.
+
+Un sistema de transición o estructura de Kripke sobre un alfabeto finito $\Sigma$ es una estructura  $M=(E,(P_a)_{a \in \Sigma},R)$, donde:
+
+\begin{itemize}
+\item $E$ es un conjunto finito de estados
+\item $P_a$ es un predicado en $E$ ($P_a \subseteq E$)
+\item $R$ es una relación de transición binaria en $E$
+\end{itemize}
+
 \bibliographystyle{unsrt}
  \bibliography{templogic}
 
