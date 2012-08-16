@@ -131,6 +131,19 @@ Un sistema de transición o estructura de Kripke sobre un alfabeto finito $\Sigma
 \item $R$ es una relación de transición binaria en $E$
 \end{itemize}
 
+Una transición $R(e,e')$ representa un cambio en el estado del sistema. A la secuencia infinita de estados se le llama computación, donde cada estado se obtiene del estado anterior por medio de una transición.
+
+\section{Lógica CTL}
+
+La lógica CTL especifica propiedades del árbol de computación (infinito) de un sistema de transición. El árbol se obtiene definiendo un estado del sistema como la raíz (estado inicial) y luego se definen todas las posibles computaciones desde ese estado.
+
+CTL está compuesta por cuantificación sobre caminos y operadores temporales. La cuantificación sobre caminos está data por los cuantificadores:
+
+\begin{description}
+\item[A] para todo camino
+\item[E] existe un camino
+\end{description}
+
 \bibliographystyle{unsrt}
  \bibliography{templogic}
 
